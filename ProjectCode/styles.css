@@ -1,0 +1,164 @@
+  #top-bar {
+    background-color:white;
+    color: rgb(0, 0, 0);
+    font-size: 30px;
+    padding: 7px 0 6px;
+  }
+
+  #top-bar-panel-container {
+    align-items: left;
+    display: flex;
+    margin-left: 10px;
+    margin-right: 10px;
+    justify-content: space-between;
+    width: 1000px;
+  }
+  
+  #tool-description {
+    align-items: left;
+    padding-left: 1px;
+    margin-right: 10px;
+    margin-top: 5px;
+  }
+
+  #UTA {
+    font-size: 35px;
+    padding-right: 10px
+  } 
+
+  #description {
+    margin-bottom: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 660px;
+  }
+
+  #description h2 {
+    color: #444;
+    font-size: 32px;
+    font-weight: 450;
+    margin-bottom: 12px;
+    margin-top: 60px;
+  }
+
+  #description h4 {
+    color: #444;
+    font-size: 24px;
+    font-weight: 450;
+    margin-bottom: 8px;
+    margin-top: 44px;
+  }
+
+  #description p {
+    margin: 16px 0;
+  }
+
+  
+  .btncls{
+    background-color:#3A4F5E;
+    border: #2e6da4;
+  	font-family: Arial, Geneva, Arial, Helvetica,  sans-serif;
+	font-size: 15px;
+    color: #fff;
+    letter-spacing: 1px;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: normal;
+    
+    border-radius: 4px;
+    line-height: 1.5;
+    text-decoration:none;
+    
+      /*Transition*/
+  -webkit-transition: All 0.5s ease;
+  -moz-transition: All 0.5s ease;
+  -o-transition: All 0.5s ease;
+  -ms-transition: All 0.5s ease;
+  transition: All 0.5s ease;
+}
+.btncls:hover{
+    background-color:#87A2B6;
+    border: #2e6da4;
+  	font-family: Arial, Geneva, Arial, Helvetica,  sans-serif;
+	font-size: 15px;
+    color: #000;
+    letter-spacing: 1px;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: normal;
+    
+    border-radius: 4px;
+    line-height: 1.5;
+    text-decoration:none;
+    
+  }
+  path {
+    fill: none;
+    stroke-width: 1px;
+    stroke: rgb(124, 120, 120);
+}
+
+
+.tooltip1 {	
+    position: absolute;			
+    text-align: left;			
+    width: 140px;					
+    height: 25px;					
+    padding: 2px;				
+    font: 10px sans-serif;		
+    background: lightsteelblue;	
+    border: 1px;		
+    border-radius: 8px;			
+    pointer-events: none;			
+}
+
+html {
+  width: 100%;
+  height: 100%;
+}
+
+div.tooltip {
+width: 200px;
+height: 100px;
+background-color: black;
+color: #fff;
+text-align: justify;
+border-radius: 6px;
+padding: 5px 5px 5px 5px ;
+position: absolute;
+z-index: 1;
+top:-30px;
+left:50%;
+transform:translateX(20%);
+pointer-events: none;
+}
+
+
+.tooltip h2 {
+margin: auto;
+font: 14px sans-serif;
+}
+
+#value{
+  margin-left: 50px;
+}
+.column {
+float: left;
+height: 1000px;
+width:  2000px;
+padding-bottom: 500px;
+margin-bottom: 300px;
+}
+
+.left, .right {
+width: 33%;
+}
+
+.middle {
+width: 33%;
+}
+ .row:after {
+content: "";
+display: table;
+clear: both;
+}

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <script src="https://d3js.org/d3.v6.js"></script>
+  <script src="https://unpkg.com/d3-simple-slider"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dialog-polyfill/0.4.9/dialog-polyfill.min.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+  <script src="https://d3js.org/d3.v5.js"></script>
+  <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+  <script src="./firstView.js" async></script>
+  <!-- <script src="./secondView.js" async></script> -->
+  <script src="./thirdView.js" async></script>
+  
+  <link rel="stylesheet" href="styles.css" />
+  <title>Battery Electric Bus Deployment</title>
+  
+</head>
+
+<body>
+  <div id="top-bar">
+    <div id="top-bar-panel-container" class="panel-container">
+      <div id="tool-description">
+        <h2>Battery Electric Bus Deployment in the Greater Salt Lake Region</h2>        
+      </div>
+      <div id="UTA">
+          <p>UTA <span><a href="https://www.rideuta.com/" target="_blank" id="branding">
+            <img src="images/uta.png"></a></span>  
+      </div>
+    </div>
+  </div>      
+      
+     <div class="column">
+         <div class="column left">
+            <div class="vertical-center">
+              <button class="btncls" onclick="utahTaz()">Traffic Analysis Zones (TAZ)</button>
+              <button class = "btncls" onclick="utahPollution()">Pollutant</button>
+              <button class = "btncls" onclick="utahLowIncomePop()">Low-income Population</button>
+              <!-- <button class = "btncls" onclick="busRouteService()">Bus Route Service Area</button> -->
+            </div>
+
+            <svg id = ""width="600" height="1200">
+              <g id="mapLayer"></g>
+              <g id="cityLayer"></g>
+            </svg>
+         </div>
+         <div class="column middle">
+            
+        </div>
+
+
+        <div class="column right">
+          <div id = chart-view>
+            <script src = chart.js></script>
+          </div>
+
+
+          <div id='slider_container'>
+            <div class='wrap'>
+              <p id="value"></p>
+              <div id="slider">
+                
+              </div>
+            </div>
+          </div>
+
+
+         </div>
+         
+        
+    
+
+
+     </div>
+
+
+
+  <div id="description">
+    <h2>Background</h2>
+    <p>
+        Environmental concerns due to fossil fuel consumption and emissions drive transportation industry to shift
+        towards low-impact and sustainable energy sources. Public transit system, as an integral part of multimodal
+        transportation ecosystem, has been supporting such shift by exploring the adoption of electric vehicles. In recent
+        years, the advancement in <strong>Battery Electric Buses (BEBs)</strong> and their supporting infrastructure technology made
+        them a viable replacement for diesel and <Strong>Compressed Natural Gas (CNG) buses</Strong>. Yet, it remains a challenge on
+        how to optimally deploy the BEB system due to its unique spatio-temporal characteristics.  
+    </p>
+
+    <p>
+        <strong>Utah Transit Authority (UTA)</strong>, the public transportation provider throughout the Wasatch Front of Utah, has already begun the electrification of its bus fleet starting from 2016. 
+        <a href="https://www.rideuta.com/news/2016/04/UTA-Announces-Plans-for-All-Electric-Buses" target = "_blank" title="The news from UTASocial">5 BEBs have been brought to service</a>, 
+        among which three were used on route 2 and two served the University of Utah campus. After the successful initial release of BEBs
+        , UTA has been working with the University of Utah to further study the possiblility of full electrification.
+    </p>
+
+    <h2>Challenges</h2>
+
+    <p>While BEB and its supporting infrastructure have been commercialized
+        and gradually adopted, how to optimally deploy the BEB system
+        remains a challenge due to several unique spatio-temporal characteristics
+        associated with the system itself. First, to support long daily operation
+        time and high daily mileage, some BEBs would require both
+        periodic on-route charging at bus terminals and overnight charging at
+        bus garages. A careful planning for the optimal locations of on-route
+        charging stations and overnight in-depot charging stations is necessary
+        to efficiently serve the BEBs while keeping the cost minimal. Second,
+        the space-time trajectories of BEBs should fit into current transit vehicle
+        operation routes and schedules as much as possible, to enable smooth
+        transition from traditional diesel or Compressed Natural Gas (CNG)
+        buses to BEBs. The concern for potential interference with current operation
+        routes and schedule would impede the acquisition of BEBs. It
+        thus requires a sophisticated spatio-temporal analytical method to determine
+        how to spatially and temporally integrate BEBs into current
+        public transit system without interference with current operation routes
+        and schedules.</p>
+          
+    <h2>Related work</h2>
+
+    <p>
+        <a href="https://www.sciencedirect.com/science/article/pii/S0966692317306294?via%3Dihub" target = "_blank" title="Optimizing the spatio-temporal deployment of battery electric bus system">Wei et al. (2018)</a> developed an innovative spatio-temporal
+        analytical framework to assist transit agencies in identifying the optimal
+        deployment for the BEB system. Specifically, a spatio-temporal
+        optimization model is developed to minimize the cost of replacing a
+        certain number of diesel or CNG buses (part of the fleet) with BEBs,
+        while in compliance with existing bus operation routes and schedules.
+        The proposed model can be used to determine the optimal spatiotemporal
+        allocation of the BEBs, as well as the associated on-route
+        charging stations and in-depot charging stations. The network data is obtained from UTA in year 2016.
+    </p>
+
+    <p>
+        In addition, Yirong et al. futher enrich the strategical deployment framework of BEB by incorporating a second objective, environmental equity. The research develops a bi-objective spatio-temporal optimization model for the strategic deployment of BEB. 
+        The first objective is to minimize the cost of purchasing BEB and installing both on-route and in-depot charging stations while
+        maintaining current bus schedules. The other objective is to maximize environmental equity by incorporating the disadvantaged population in the decision-making process. One main reason is that research on social vulnerability found that <strong>low socioeconomic status (SES)</strong> groups often experience
+         a higher concentration of air pollutants, due to the low value of lands and the closeness to income-earning opportunities.
+    </p>
+    
+
+    <h2>What's happening in the visualization?</h2>
+    <p>
+        The visualization is created to demonstrate the results from Yirong et al., which mainly contains two part
+    </p>
+
+    <p>      
+      The big insights that defines a GAN is to set up this modeling problem as a kind of contest. This is where the "adversarial" part of the name comes from. The key idea is to build not one, but two competing networks: a <span style="color: var(--generator-color);"><strong>generator</strong></span> and a <span style="color: var(--discriminator-color);"><strong>discriminator</strong></span>. The generator tries to create random <span style="color: var(--generator-color);">synthetic outputs</span> (for instance, images of faces), while the discriminator tries to tell these apart from <span style="color: var(--real-data-color);">real outputs</span> (say, a database of celebrities). The hope is that as the two networks face off, they'll both get better and better&mdash;with the end result being a generator network that produces realistic outputs.
+    </p>
+    
+    <p>      
+      To sum up: <strong><em>Generative adversarial networks</em></strong> are neural networks that learn to choose samples from a special distribution (the <em>"generative"</em> part of the name), and they do this by setting up a competition (hence <em>"adversarial"</em>).
+    </p>
+
+    <h2>What's happening in the visualization?</h2>
+    <p>
+      GANs are complicated beasts, and the visualization has a lot going on. Here are the basic ideas.
+    </p>
+    
+    <p>
+      First, we're not visualizing anything as complex as generating realistic images. Instead, we're showing a GAN that learns a distribution of points in just <em>two dimensions</em>. There's no real application of something this simple, but it's much easier to show the system's mechanics. For one thing, probability distributions in plain old 2D (x,y) space are much easier to visualize than distributions in the space of high-resolution images.  
+    </p>
+
+    <h4>
+      Pick a data distribution.
+    </h4>
+    
+    <p>
+      At top, you can choose a probability distribution for GAN to learn, which we visualize as <span style="color: var(--real-data-color);">a set of data samples</span>. Once you choose one, we show them at two places: a smaller version in the <em>model overview graph</em> view on the left; and a larger version in the <em>layered distributions</em> view on the right.
+    </p>
+    
+    <div class="supporting-figure">
+      <div class="figure-caption">
+        Figure 1. Selected data distribution is shown at two places.
+      </div>
+    </div>
+    
+    <p>
+      We designed the two views to help you better understand how a GAN works to generate realistic samples:
+      <br />
+      (1) The <strong>model overview graph</strong> shows the architecture of a GAN, its major components and how they are connected, and also visualizes results produced by the components;
+      <br />
+      (2) The <strong>layered distributions</strong> view overlays the visualizations of the components from the model overview graph, so you can more easily compare the component outputs when analyzing the model.
+    </p>
+    
+    <h4>
+      Let training begin.
+    </h4>
+    
+    <p>
+      To start training the GAN model, click the play button  on the toolbar. Besides <span style="color: var(--real-data-color);">real samples</span>  from your chosen distribution, you'll also see <span style="color: var(--generator-color);">fake samples</span> that are generated by the model. Fake samples' positions continually updated as the training progresses. A perfect GAN will create fake samples whose distribution is indistinguishable from that of the real samples. When that happens, in the layered distributions view, you will see the two distributions nicely overlap.
+    </p>
+    
+    <div class="supporting-figure">
+
+      <div class="figure-caption">
+        Figure 2. Fake samples' positions continually updated as the training progresses. Then, the distributions of the real and fake samples nicely overlap.
+      </div>
+    </div>
+    
+    <h4>
+      Visualizing generator and discriminator.
+    </h4>
+    
+    <p>
+      Recall that the <span style="color: var(--generator-color);">generator</span> and <span style="color: var(--discriminator-color);">discriminator</span> within a GAN is having a little contest, competing against each other, iteratively updating the <span style="color: var(--generator-color);">fake samples</span> to become more similar to the <span style="color: var(--real-data-color);">real ones</span>. GAN Lab visualizes the interactions between them. 
+    </p>
+    
+    <p>
+      <strong>Generator.</strong>
+      As described earlier, the <span style="color: var(--generator-color);">generator</span> is a function that transforms a random input into a synthetic output. In GAN Lab, a random input is a 2D sample with a (x, y) value (drawn from a uniform or Gaussian distribution), and the output is also a 2D sample, but mapped into a different position, which is a <span style="color: var(--generator-color);">fake sample</span>. One way to visualize this mapping is using <em>manifold</em> <small><a href="http://colah.github.io/posts/2014-03-NN-Manifolds-Topology/">[Olah, 2014]</a></small>. The input space is represented as a uniform square grid. As the function maps positions in the input space into new positions, if we visualize the output, the whole grid, now consisting of irregular quadrangles, would look like a warped version of the original regular grid. The area (or density) of each (warped) cell has now changed, and we encode the density as opacity, so a higher opacity means more samples in smaller space. A very fine-grained manifold will look almost the same as the visualization of the fake samples. This visualization shows how the generator learns a mapping function to make its output look similar to the distribution of the <span style="color: var(--real-data-color);">real samples</span>.
+    </p>
+    
+    <div class="supporting-figure">
+
+      <div class="figure-caption">
+        Figure 3. The generator's data transformation is visualized as a manifold, which turns input noise (leftmost) into fake samples (rightmost).
+      </div>
+    </div>
+    
+    <p>
+      <strong>Discriminator.</strong>
+      As the generator creates <span style="color: var(--generator-color);">fake samples</span>, the <span style="color: var(--discriminator-color);">discriminator</span>, a binary classifier, tries to tell them apart from the <span style="color: var(--real-data-color);">real samples</span>. GAN Lab visualizes its decision boundary as a 2D heatmap (similar to <a href="http://playground.tensorflow.org"><em>TensorFlow Playground</em></a>). The background colors of a grid cell encode the confidence values of the classifier's results. <span style="background-color: var(--real-data-color); color: white;">Darker green</span> means that samples in that region are more likely to be real; <span style="background-color: var(--generator-color); color: white;">darker purple</span>, more likely to be fake. As a GAN approaches the optimum, the whole heatmap will become more <span style="background-color: rgb(117, 117, 117); color: white;">gray</span> overall, signalling that the discriminator can no longer easily distinguish fake examples from the real ones.
+    </p>
+    
+    <div class="supporting-figure">
+
+      <div class="figure-caption">
+        Figure 4. The discriminator's performance can be interpreted through a 2D heatmap. Here, the discriminator is performing well, since most real samples lies on its classification surface’s green region (and fake samples on purple region).
+      </div>
+    </div>
+    
+    <h4>
+      Understanding interplay between generator and discriminator.
+    </h4>
+    
+    <p>
+      In a GAN, its two networks influence each other as they iteratively update themselves. A great use for GAN Lab is to use its visualization to learn how the <span style="color: var(--generator-color);">generator</span> incrementally updates to improve itself to generate fake samples that are increasingly more realistic. The generator does it by trying to fool the <span style="color: var(--discriminator-color);">discriminator</span>. The generator's loss value decreases when the discriminator classifies <span style="color: var(--generator-color);">fake samples</span> as <span style="color: var(--real-data-color);">real</span> (bad for discriminator, but good for generator). GAN Lab visualizes gradients (as <span style="color: var(--gradient-color);">pink lines</span>) for the fake samples such that the generator would achieve its success.
+    </p>
+
+    <div class="supporting-figure">
+
+      <div class="figure-caption">
+        Figure 5. Fake samples' movement directions are indicated by the generator’s gradients (pink lines) based on those samples' current locations and the discriminator's curren classification surface (visualized by background colors).
+      </div>
+    </div>
+    
+    <p>
+      This way, the <span style="color: var(--generator-color);">generator</span> gradually improves to produce samples that are even more realistic. Once the fake samples are updated, the <span style="color: var(--discriminator-color);">discriminator</span> will update accordingly to finetune its decision boundary, and awaits the next batch of fake samples that try to fool itself. This iterative update process continues until the discriminator cannot tell <span style="color: var(--real-data-color);">real</span> and <span style="color: var(--generator-color);">fake</span> samples apart.
+    </p>
+    
+    <h4>
+      Playing with interactive features.
+    </h4>
+    
+    <p>
+      GAN Lab has many cool features that support interactive experimentation.
+      <dl>
+        <dt>
+          Interactive hyperparameter adjustment
+        </dt>
+        <dd>
+          Click the edit icon  to reveal individual hyperparameters, and edit them on the fly during training.
+        </dd>
+        <dt>
+          User-defined data distribution
+        </dt>
+        <dd>
+          If you don't like our selection of distributions, draw your own by clicking the icon  at the end of the data distributions list.
+        </dd>
+        <dt>
+          Slow-motion mode
+        </dt>
+        <dd>
+          Lost track of the animation? Then you can slow it down by clicking the slow-motion icon  to enter slow-mo. 
+          <a class="video-part-link" data-start="111" data-end="138">Check out this video</a>
+        </dd>
+        <dt>
+          Manual step-by-step execution
+        </dt>
+        <dd>
+          If you want more control, you can manually train individual iteration step by step by clicking the icon Check out this video</a>
+        </dd>
+      </dl>
+    </p>
+    
+    <p>
+      Check out the following video for a quick look at GAN Lab's features.
+      <ul>
+        <li class="video-part-link" data-start="1" data-end="37">
+          Introduction of GAN Lab 
+          <small>(0:00-0:38)</small>
+        </li>
+        <li class="video-part-link" data-start="38" data-end="64">
+          Training of a simple distribution with hyperparameter adjustments 
+          <small>(0:38-1:05)</small>
+        </li>
+        <li class="video-part-link" data-start="65" data-end="110">
+          Training of a user-defined distribution
+          <small>(1:05-1:51)</small>
+        </li>
+        <li class="video-part-link" data-start="111" data-end="138">
+          Slow-motion mode 
+          <small>(1:51-2:19)</small>
+        </li>
+        <li class="video-part-link" data-start="139" data-end="190">
+          Manual step-by-step execution 
+          <small>(2:19-3:10)</small>
+        </li>
+      </ul>
+
+      <iframe id="video-demo-iframe" width="640" height="302" 
+        style="width: 640px;"
+        src="https://www.youtube.com/embed/eTq9T_sPTYQ?rel=0&amp;enablejsapi=1"
+        frameborder="0" allowfullscreen>
+      </iframe>
+    </p>
+  
+  </body>
