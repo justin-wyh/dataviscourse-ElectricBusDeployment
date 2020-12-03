@@ -7,7 +7,7 @@ This project develops a visulization of battery electric bus deployment plan und
 The items are required in the final project submission include:
 
 (1) process book: (file name: ProcessBook.pdf)
-The process book has been updated compared with the verision we submitted in the milestone stage. We modidied some visualization design.
+The process book has been updated compared with the verision we submitted in the milestone stage. We modified some visualization design.
 
 (2) Code:
 All the code files are saved in the folder called ProjectCode.
