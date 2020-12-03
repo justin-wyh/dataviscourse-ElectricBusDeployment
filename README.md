@@ -14,12 +14,8 @@ All the code files are saved in the folder called ProjectCode.
 
 (3) Data:
 All data used in this project is saved in the folder called ProjectData.
-
-(3) Project Website:
-
-
  
-(4) Project Screen-Cast
+(3) Project Screen-Cast
 A two-minute screencast is recorded and can be accessed using the following link:https://drive.google.com/file/d/1BOVRdNFUtAw9RASRjrq4aYfJ0JdBi1P5/view?usp=sharing
 
 
