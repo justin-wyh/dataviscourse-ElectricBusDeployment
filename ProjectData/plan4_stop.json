@@ -1,0 +1,4 @@
+{"type":"FeatureCollection", "features": [
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-111.79689765245212,40.687321053281956]},"properties":{"StopId":22259,"StopName":"WASATCH BLVD @ 3900 S","StreetNum":3900,"OnStreet":"S WASATCH BLVD","AtStreet":"3900 S","City":"MILLCREEK","InService":1,"Bench":0,"Shelter":1,"Lighting":1,"Garbage":1,"Bicycle":0,"Transfer":1,"LocationUs":"Bus Stop","UTAStopID":"101570"}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-111.96024168526904,40.69340002121531]},"properties":{"StopId":22289,"StopName":"3650 S @ 2880 W","StreetNum":2880,"OnStreet":"W 3650 S","AtStreet":"2700 W","City":"WEST VALLEY","InService":1,"Bench":1,"Shelter":1,"Lighting":1,"Garbage":1,"Bicycle":0,"Transfer":1,"LocationUs":"Bus Bay","UTAStopID":"101592"}}
+]}

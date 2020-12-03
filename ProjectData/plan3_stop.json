@@ -1,0 +1,3 @@
+{"type":"FeatureCollection", "features": [
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-111.79689765245212,40.687321053281956]},"properties":{"StopId":22259,"StopName":"WASATCH BLVD @ 3900 S","StreetNum":3900,"OnStreet":"S WASATCH BLVD","AtStreet":"3900 S","City":"MILLCREEK","InService":1,"Bench":0,"Shelter":1,"Lighting":1,"Garbage":1,"Bicycle":0,"Transfer":1,"LocationUs":"Bus Stop","UTAStopID":"101570"}}
+]}
