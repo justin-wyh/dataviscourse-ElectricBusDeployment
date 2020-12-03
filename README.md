@@ -9,13 +9,14 @@ The items are required in the final project submission include:
 (1) process book: (file name: ProcessBook.pdf)
 The process book has been updated compared with the verision we submitted in the milestone stage. We modidied some visualization design.
 
-(2) Code
+(2) Code:
 All the code files are saved in the folder called ProjectCode.
 
-(3) Data
+(3) Data:
 All data used in this project is saved in the folder called ProjectData.
 
-(3) Project Website
+(3) Project Website:
+
 
  
 (4) Project Screen-Cast
